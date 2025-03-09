@@ -1,0 +1,41 @@
+tabuleiro 3x3 numerado de 1 a 9
+a cada rodada um dos jogadores escolhe a casa(1 a 9)
+alterna entre os jogares a cada rodada
+acaba quando um jogador completa uma linha, coluna ou diagonal
+
+
+main{
+    inicia tabuleiro
+    while(!acabou) {
+        jogada
+    } 
+    mensagem final
+
+
+
+
+
+}
+
+
+inicia tabuleiro {
+    l para 1 a 9
+    i para linhas
+    j para colunas
+    loop para preencher de 1 a 9
+    acabou=0
+}
+
+acabou {
+    se completar retorna 1
+    verifica a cada jogada
+}
+
+jogada {
+    alterna entre jogador 
+    pede a posicao para jogar
+}
+
+mensagem final {
+    jogador (1 ou 2) ganhou
+}
