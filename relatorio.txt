@@ -1,0 +1,14 @@
+08/03 - Início do planejamento e desenvolvimento
+09/03 - Primeiro commit:
+    Primeira versão. Sem muitas dificuldades para criar o código base.
+    Alguns erros para corrigir e muitas ideias para implementar.
+10/03 - Relatório:
+    Correções necessárias: 
+        Verficação de entradas válidas
+    Possíveis melhorias: 
+        Mensagens personalizadas
+10/03 - Segundo commit:
+    Correção de alguns erros.
+    Implementação de verificação de entrada.
+
+

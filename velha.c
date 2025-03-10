@@ -1,5 +1,6 @@
 #include <stdio.h> 
 #include <stdlib.h>
+#include "velha.h"
 
 #define LINHAS 3
 #define COLUNAS 3
@@ -7,19 +8,12 @@
 //cria a matriz do tabuleiro como variavel global
 int tabuleiro[3][3];
 
-//cabecalho das funcoes para organizacao
-void iniciaTabuleiro();
-void imprime();
-void jogada();
-void joga(int* vezJogador);
-void verificaAcabou(int* acabou, int jogadas);
-
 int main() {
     int acabou=0;
     //preenche as posicoes da matriz
     iniciaTabuleiro();
     //armazena a quantidade de jogadas
-    int jogadas=1;
+    int jogadas=0;
     //enquanto nao acabou, acontece uma rodada
     while(acabou==0) {
         jogada(&jogadas);
@@ -67,15 +61,15 @@ void imprime() {
 }
 
 void jogada(int* jogadas) {
-    printf("Proxima jogada!\n");
-    //se o numero da jogada for impar, a vez e do jogador 1 
+    //se o numero da jogada for 0 ou par, a vez e do jogador 1 
     int vezJogador;
-    if((*jogadas)%2!=0) {
+    if((*jogadas)%2==0) {
         vezJogador=1;
     } else {
+        //se nao, e vez do jogador 3
         vezJogador=2;
     }
-    //armazena a jogada
+    //faz a jogada com base na vez do jogador
     joga(&vezJogador);
 
     //acrescenta 1 ao numero de jogadas
@@ -84,7 +78,11 @@ void jogada(int* jogadas) {
 
 void joga(int* vezJogador) {
     int pos;
-    //imprime o jogador da vez
+    printf("Proxima jogada!\n");
+    //do while para verificacao de entrada
+    int valida=0;
+    do{
+        //imprime o jogador da vez com base na funcao anterior
     if((*vezJogador)==1) {
         printf("Jogador 1 - X\n");
     } else {
@@ -93,6 +91,9 @@ void joga(int* vezJogador) {
     //escaneia a posicao da jogada
     printf("Digite a posicao (1-9)\n");
     scanf("%d", &pos);
+    //verifica se a posicao digitada e valida
+    valida=verificaEntrada(pos);
+    } while(!valida);
     //adiciona X como 11 ou O como 12 no tabuleiro
     if(pos>=1 && pos<=3) {
         if((*vezJogador)==1) {
@@ -117,6 +118,15 @@ void joga(int* vezJogador) {
     imprime();
 }
 
+int verificaEntrada(int pos) {
+    //so retorna 1 se a posicao digitada for valida
+    if(pos>=1 && pos<9) {
+        return 1;
+    } else {
+        printf("Entrada invalida!\n");
+    }
+}
+
 void verificaAcabou(int* acabou, int jogadas) {
     int ganhador=0;
     
@@ -125,8 +135,6 @@ void verificaAcabou(int* acabou, int jogadas) {
         //se as 3 posicoes forem iguais, retorna 11 ou 12 para o ganhador
         if (tabuleiro[i][0] == tabuleiro[i][1] && tabuleiro[i][1] == tabuleiro[i][2]) {
             ganhador=tabuleiro[i][0];
-            (*acabou)=1;
-            break;
         }
     }
 
@@ -135,8 +143,6 @@ void verificaAcabou(int* acabou, int jogadas) {
         //se as 3 posicoes forem iguais, retorna 11 ou 12 para o ganhador
         if (tabuleiro[0][i] == tabuleiro[1][i] && tabuleiro[1][i] == tabuleiro[2][i]) {
             ganhador=tabuleiro[0][i];
-            (*acabou)=1;
-            break;
         }
     }
 
@@ -144,21 +150,23 @@ void verificaAcabou(int* acabou, int jogadas) {
     //se as 3 posicoes forem iguais, retorna 11 ou 12 para o ganhador
     if (tabuleiro[0][0] == tabuleiro[1][1] && tabuleiro[1][1] == tabuleiro[2][2]) {
         ganhador=tabuleiro[0][0];
-        (*acabou)=1;
     }
 
     // Verifica diagonal secundária (/)
     //se as 3 posicoes forem iguais, retorna 11 ou 12 para o ganhador
     if (tabuleiro[0][2] == tabuleiro[1][1] && tabuleiro[1][1] == tabuleiro[2][0]) {
         ganhador=tabuleiro[0][2];
-        (*acabou)=1;
     }
 
     //imprime o vencedor, caso tenha
     if(ganhador==11) {
         printf("Jogador 1 ganhou!\n");
+        (*acabou)=1;
+        return;
     } else if(ganhador==12) {
         printf("Jogador 2 ganhou!\n");
+        (*acabou)=1;
+        return;
     }
 
     //se der empate (9 jogadas sem vencedor)
