@@ -7,8 +7,10 @@
         Verficação de entradas válidas
     Possíveis melhorias: 
         Mensagens personalizadas
+        Menu para iniciar nojo jogo ou sair
 10/03 - Segundo commit:
     Correção de alguns erros.
     Implementação de verificação de entrada.
-
+11/03 - Terceiro commit: 
+    Implementação do menu ao final do jogo.
 

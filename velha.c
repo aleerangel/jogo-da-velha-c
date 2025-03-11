@@ -9,18 +9,22 @@
 int tabuleiro[3][3];
 
 int main() {
-    int acabou=0;
-    //preenche as posicoes da matriz
-    iniciaTabuleiro();
-    //armazena a quantidade de jogadas
-    int jogadas=0;
-    //enquanto nao acabou, acontece uma rodada
-    while(acabou==0) {
-        jogada(&jogadas);
-        verificaAcabou(&acabou, jogadas);
+    int continuar=1;
+    //loop para funcao de jogar novamente
+    while(continuar==1) {
+        int acabou=0;
+        //preenche as posicoes da matriz
+        iniciaTabuleiro();
+        //armazena a quantidade de jogadas
+        int jogadas=0;
+        //enquanto nao acabou, acontece uma rodada
+        while(acabou==0) {
+            jogada(&jogadas);
+            verificaAcabou(&acabou, jogadas);
+        }
+        //menu para jogar novamente ou sair
+        menu(&continuar);
     }
-    
-    
     return 0;
 }
 
@@ -71,7 +75,6 @@ void jogada(int* jogadas) {
     }
     //faz a jogada com base na vez do jogador
     joga(&vezJogador);
-
     //acrescenta 1 ao numero de jogadas
     (*jogadas)++;
 }
@@ -93,6 +96,7 @@ void joga(int* vezJogador) {
     scanf("%d", &pos);
     //verifica se a posicao digitada e valida
     valida=verificaEntrada(pos);
+    //repete enquanto a entrada for invalida
     } while(!valida);
     //adiciona X como 11 ou O como 12 no tabuleiro
     if(pos>=1 && pos<=3) {
@@ -120,7 +124,7 @@ void joga(int* vezJogador) {
 
 int verificaEntrada(int pos) {
     //so retorna 1 se a posicao digitada for valida
-    if(pos>=1 && pos<9) {
+    if(pos>=1 && pos<=9) {
         return 1;
     } else {
         printf("Entrada invalida!\n");
@@ -129,7 +133,6 @@ int verificaEntrada(int pos) {
 
 void verificaAcabou(int* acabou, int jogadas) {
     int ganhador=0;
-    
     // Verifica linhas
     for (int i = 0; i < LINHAS; i++) {
         //se as 3 posicoes forem iguais, retorna 11 ou 12 para o ganhador
@@ -137,7 +140,6 @@ void verificaAcabou(int* acabou, int jogadas) {
             ganhador=tabuleiro[i][0];
         }
     }
-
     // Verifica colunas
     for (int i = 0; i < COLUNAS; i++) {
         //se as 3 posicoes forem iguais, retorna 11 ou 12 para o ganhador
@@ -145,19 +147,16 @@ void verificaAcabou(int* acabou, int jogadas) {
             ganhador=tabuleiro[0][i];
         }
     }
-
     // Verifica diagonal principal (\)
     //se as 3 posicoes forem iguais, retorna 11 ou 12 para o ganhador
     if (tabuleiro[0][0] == tabuleiro[1][1] && tabuleiro[1][1] == tabuleiro[2][2]) {
         ganhador=tabuleiro[0][0];
     }
-
     // Verifica diagonal secundária (/)
     //se as 3 posicoes forem iguais, retorna 11 ou 12 para o ganhador
     if (tabuleiro[0][2] == tabuleiro[1][1] && tabuleiro[1][1] == tabuleiro[2][0]) {
         ganhador=tabuleiro[0][2];
     }
-
     //imprime o vencedor, caso tenha
     if(ganhador==11) {
         printf("Jogador 1 ganhou!\n");
@@ -168,10 +167,29 @@ void verificaAcabou(int* acabou, int jogadas) {
         (*acabou)=1;
         return;
     }
-
     //se der empate (9 jogadas sem vencedor)
     if(jogadas==9) {
         (*acabou)=1;
         printf("Empate!\n");
     }
+}
+
+void menu(int* continuar) {
+    int resposta;
+    printf("O jogo acabou!\n");
+    printf("Jogar novamente: 1\n");
+    printf("Sair: 2\n");
+    //verifica se a entrada e valida
+    do{
+        scanf("%d", &resposta);
+        if(resposta==1) {
+        //retorna 1 em caso de jogo novo
+            (*continuar)=1;
+            break;
+        } else if(resposta==2) {
+        //retorna 0 para sair
+            (*continuar)=0;
+            break;
+        }
+    } while(resposta!=0 && resposta!=1);
 }

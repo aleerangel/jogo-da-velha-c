@@ -5,3 +5,4 @@ void jogada();
 void joga(int* vezJogador);
 void verificaAcabou(int* acabou, int jogadas);
 int verificaEntrada(int pos);
+void menu(int* continuar);
