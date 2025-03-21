@@ -6,11 +6,14 @@
     Correções necessárias: 
         Verficação de entradas válidas
     Possíveis melhorias: 
-        Mensagens personalizadas
-        Menu para iniciar nojo jogo ou sair
+        Mensagens personalizadas - implementado
+        Menu para iniciar nojo jogo ou sair - implementado
+        Sistema de placar
 10/03 - Segundo commit:
     Correção de alguns erros.
     Implementação de verificação de entrada.
 11/03 - Terceiro commit: 
     Implementação do menu ao final do jogo.
+21/03 - Quarto commit: 
+    Verifica se a posicao jogada esta vazia
 

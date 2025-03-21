@@ -123,10 +123,29 @@ void joga(int* vezJogador) {
 }
 
 int verificaEntrada(int pos) {
-    //so retorna 1 se a posicao digitada for valida
-    if(pos>=1 && pos<=9) {
+    int valido=1;
+    //verifica se a entrada esta entre 1 e 9
+    //verifica se a posicoa esta ocupada
+    if(pos>=1 && pos<=3) {
+        if(tabuleiro[0][pos-1]==11||tabuleiro[0][pos-1]==12) {
+            valido=0;
+        } 
+    } else if(pos>=4 && pos<=6) {
+        if(tabuleiro[1][pos-4==11]||tabuleiro[1][pos-4==12]) {
+            valido=0;
+        }
+    } else if(pos>=7 && pos<=9) {
+        if(tabuleiro[2][pos-7]==11||tabuleiro[2][pos-7]==12) {
+            valido=0;
+        }
+    } else {
+        valido=0;
+    }
+    if(valido==1) {
+        //se for tudo valido, retorna 1
         return 1;
     } else {
+        //se nao for valido, mantem como 0
         printf("Entrada invalida!\n");
     }
 }
