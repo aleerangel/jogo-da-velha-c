@@ -6,7 +6,7 @@
 <h2> :video_game: Rodar</h2>
 <p>Recomendação: baixar o repositório e executar o velha.exe<p>
 <p>Outra opção:<p>
-<p>https://onlinegdb.com/PoMFN8MKzZ</p>
+<p>https://onlinegdb.com/c0nU5hPFo</p>
 <p>Algumas funções não funcionam corretamente no compilador online<p>
 
 ## :rocket: Tecnologias
