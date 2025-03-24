@@ -14,7 +14,7 @@
  <img src="https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white">
 </div>
 
-# Autor
+# Autores
 
-| [<img loading="lazy" src="https://avatars.githubusercontent.com/u/161789533?v=4" width=115><br><sub>Alexandre Rangel</sub>](https://github.com/aleerangel) |
-| :---: | 
+| [<img loading="lazy" src="https://avatars.githubusercontent.com/u/161789533?v=4" width=115><br><sub>Alexandre Rangel</sub>](https://github.com/aleerangel) | [<img loading="lazy" src="https://avatars.githubusercontent.com/u/203363138?v=4" width=115><br><sub>Adrian Cunha</sub>](https://github.com/AdrianVCunha) | <img loading="lazy" src="https://github.com/Volosh1n/github-avatar-generator/blob/master/examples/image.png" width=115><br><sub>Alexandre Carriço</sub> | <img loading="lazy" src="https://github.com/Volosh1n/github-avatar-generator/blob/master/examples/image.png" width=115><br><sub>Allan Gabriel</sub> |
+| :---: | :---: | :---: | :---: |
